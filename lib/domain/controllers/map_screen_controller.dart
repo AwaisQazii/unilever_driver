@@ -14,8 +14,8 @@ class MapScreenController {
   MapScreenController({
     required this.ref,
   });
-  double long = 0.0;
-  double lat = 0.0;
+  double? long = 0.0;
+  double? lat = 0.0;
 
   Future<void> getLocation() async {
     Position position = await Geolocator.getCurrentPosition(

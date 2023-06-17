@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:unilever_driver/utils/app_colors.dart';
 
 class CustomTextFormField extends StatelessWidget {
-  const CustomTextFormField({
+  CustomTextFormField({
     super.key,
     required this.controller,
     this.onTap,
@@ -14,6 +14,8 @@ class CustomTextFormField extends StatelessWidget {
     this.inputFormatters,
     this.hint,
     this.hintColor,
+    this.label,
+    this.labelColor,
     this.hintFontSize,
     this.maxLines,
     this.keyboardType,
@@ -32,6 +34,8 @@ class CustomTextFormField extends StatelessWidget {
   final bool? filled;
   final Color? textColor;
   final Color? errorTextColor;
+  final String? label;
+  final Color? labelColor;
 
   final String? hint;
   final Color? hintColor;
@@ -55,7 +59,9 @@ class CustomTextFormField extends StatelessWidget {
       maxLines: obscureText == null ? maxLines : 1,
       obscureText: obscureText ?? false,
       decoration: InputDecoration(
-        hintText: hint,
+        hintText: label == null ? hint : null,
+        labelText: hint == null ? label : null,
+        labelStyle: TextStyle(color: labelColor),
         hintStyle: TextStyle(
           color: hintColor,
           fontSize: hintFontSize,
